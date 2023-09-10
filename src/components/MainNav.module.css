@@ -1,11 +1,30 @@
 .navHolder {
-    position: relative;
-    margin: 2rem 1rem;
-    padding: 1rem;
+  position: relative;
+  margin: 2rem 1rem;
+  padding: 1rem;
+  height: 3rem;
 }
 .nav {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: flex-end;
+  align-items: center;
+  height: 1rem;
+}
+
+.active {
+  font-weight: bold;
+  font-size: 2rem;
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
+}
+
+.inactive {
+  font-weight: normal;
+  font-size: 1rem;
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
 }

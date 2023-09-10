@@ -1,9 +1,7 @@
-import { PortfolioNav } from "../components/PortfolioNav";
-
 export function Portfolio() {
   return (
     <>
-      <PortfolioNav />
+      <h1>Portfolio</h1>
     </>
   );
 }

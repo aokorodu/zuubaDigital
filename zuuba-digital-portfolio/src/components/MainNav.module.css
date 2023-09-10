@@ -1,0 +1,11 @@
+.navHolder {
+    position: relative;
+    margin: 2rem 1rem;
+    padding: 1rem;
+}
+.nav {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: end;
+}

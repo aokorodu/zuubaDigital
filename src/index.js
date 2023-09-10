@@ -9,7 +9,8 @@ const str = "hello world";
 const capEveryOther = (str) => {
   const arr = str.split("");
   const newWord = arr.map((letter, index) => {
-    const newLet = index % 2 == 0 ? letter.toLowerCase() : letter.toUpperCase();
+    const newLet =
+      index % 2 === 0 ? letter.toLowerCase() : letter.toUpperCase();
     return newLet;
   });
 

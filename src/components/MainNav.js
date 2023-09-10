@@ -1,21 +1,21 @@
 import styles from "./MainNav.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export function MainNav() {
   return (
     <div className={styles.navHolder}>
       <nav className={styles.nav}>
         <div>
-          <Link to="/">home</Link>
+          <NavLink to="/">home</NavLink>
         </div>
         <div>
-          <Link to="/portfolio">portfolio</Link>
+          <NavLink to="/portfolio">portfolio</NavLink>
         </div>
         <div>
-          <Link to="/about">about</Link>
+          <NavLink to="/about">about</NavLink>
         </div>
         <div>
-          <Link to="/contact">contact</Link>
+          <NavLink to="/contact">contact</NavLink>
         </div>
       </nav>
     </div>

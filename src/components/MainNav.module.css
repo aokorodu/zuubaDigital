@@ -1,6 +1,5 @@
 .navHolder {
   position: relative;
-  margin: 2rem 1rem;
   padding: 1rem;
   height: 3rem;
 }
@@ -13,18 +12,23 @@
   height: 1rem;
 }
 
-.active {
-  font-weight: bold;
-  font-size: 2rem;
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: linear;
+.closeButton {
+  display: none;
 }
 
-.inactive {
-  font-weight: normal;
-  font-size: 1rem;
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: linear;
+@media screen and (max-width: 600px) {
+  .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    transform: translateX(100vw);
+  }
+
+  .closeButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 }

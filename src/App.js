@@ -16,7 +16,6 @@ import { Prototypes } from "./pages/Types/Prototypes";
 function App() {
   return (
     <>
-      <MainNav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/portfolio" element={<PortfolioLayout />}>
@@ -30,6 +29,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <MainNav />
       <BGAnimation />
     </>
   );

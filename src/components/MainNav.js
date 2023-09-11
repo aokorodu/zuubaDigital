@@ -12,11 +12,11 @@ const navigation = [
 ];
 
 export function MainNav() {
-  const linkHolder = useRef(null);
+  const mobileLinkHolder = useRef(null);
   const [open, setOpen] = useState(false);
   const toggleOpen = () => {
     console.log("open?", open);
-    linkHolder.current.classList.toggle(styles.active);
+    mobileLinkHolder.current.classList.toggle(styles.open);
     setOpen(!open);
   };
 
@@ -29,28 +29,42 @@ export function MainNav() {
   };
 
   return (
-    <div className={styles.navHolder}>
-      <div className={styles.closeButton} onClick={toggleOpen}>
-        {open ? <MdClose /> : <FaBars />}
-      </div>
-      <div className={getClass()}>
-        <nav ref={linkHolder} className={styles.nav}>
-          {navigation.map((navitem) => {
+    <>
+      <div className={styles.navHolder}>
+        <div className={styles.desktopNav}>
+          {navigation.map((item) => {
+            const name = item.name;
+            const link = item.link;
             return (
               <NavLink
-                key={navitem.name}
-                to={navitem.link}
+                key={name}
+                to={link}
                 className={({ isActive }) => {
                   return isActive ? styles.active : styles.inactive;
                 }}
-                onClick={toggleOpen}
               >
-                {navitem.name}
+                {name}
               </NavLink>
             );
           })}
-        </nav>
+        </div>
+
+        <div ref={mobileLinkHolder} className={styles.mobileNav}>
+          {navigation.map((item) => {
+            const name = item.name;
+            const link = item.link;
+            return (
+              <NavLink key={`mobile_${name}`} to={link} onClick={toggleOpen}>
+                {name}
+              </NavLink>
+            );
+          })}
+        </div>
+        {/* ----toggle -----*/}
+        <div className={styles.toggle} onClick={toggleOpen}>
+          {open ? <MdClose /> : <FaBars />}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

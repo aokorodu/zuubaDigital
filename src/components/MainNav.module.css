@@ -16,6 +16,14 @@
   display: none;
 }
 
+.open {
+  transform: translateX(0);
+}
+
+.closed {
+  transform: translateX(0);
+}
+
 @media screen and (max-width: 600px) {
   .nav {
     display: flex;
@@ -23,12 +31,25 @@
     gap: 1rem;
     justify-content: flex-start;
     align-items: center;
-    transform: translateX(100vw);
   }
 
   .closeButton {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+  }
+
+  .open {
+    transform: translateX(0);
+    transition-property: all;
+    transition-duration: 333ms;
+    transition-timing-function: ease-out;
+  }
+
+  .closed {
+    transform: translateX(100vw);
+    transition-property: all;
+    transition-duration: 0ms;
+    transition-timing-function: ease-in;
   }
 }

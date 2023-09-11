@@ -43,6 +43,7 @@ export function MainNav() {
                 className={({ isActive }) => {
                   return isActive ? styles.active : styles.inactive;
                 }}
+                onClick={toggleOpen}
               >
                 {navitem.name}
               </NavLink>

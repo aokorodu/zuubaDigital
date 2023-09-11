@@ -1,6 +1,5 @@
 .navHolder {
   position: relative;
-  padding: 1rem;
   height: 3rem;
 }
 .nav {
@@ -24,13 +23,15 @@
   transform: translateX(0);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
   .nav {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     justify-content: flex-start;
     align-items: center;
+    background-color: white;
+    height: 100vh;
   }
 
   .closeButton {

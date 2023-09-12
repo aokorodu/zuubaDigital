@@ -17,6 +17,7 @@ import { PageLayout } from "./pages/PageLayout";
 function App() {
   return (
     <>
+      <BGAnimation />
       <Routes>
         <Route path="/" element={<PageLayout />}>
           <Route index element={<Home />} />
@@ -33,7 +34,6 @@ function App() {
         </Route>
       </Routes>
       <MainNav />
-      <BGAnimation />
     </>
   );
 }

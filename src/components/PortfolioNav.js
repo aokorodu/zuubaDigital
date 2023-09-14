@@ -1,23 +1,22 @@
 import styles from "./PortfolioNav.module.css";
 import { Link } from "react-router-dom";
 
+const pLinks = [
+  { name: "games", link: "/portfolio/games" },
+  { name: "experiments", link: "/portfolio/experiments" },
+  { name: "interactive SVGs", link: "/portfolio/intSVGs" },
+  { name: "prototypes", link: "/portfolio/prototypes" },
+  { name: "gen art", link: "/portfolio/genart" },
+];
+
 export function PortfolioNav() {
   return (
     <>
-      <nav className={styles.nav}>
-        <div>
-          <Link to="/games">games</Link>
-        </div>
-        <div>
-          <Link to="/experiments">experiments</Link>
-        </div>
-        <div>
-          <Link to="/experiments">interactive SVGs</Link>
-        </div>
-        <div>
-          <Link to="/prototypes">prototypes</Link>
-        </div>
-      </nav>
+      <div className={styles.subnavHolder}>
+        {pLinks.map((plink) => {
+          return <Link to={plink.link}>{plink.name}</Link>;
+        })}
+      </div>
     </>
   );
 }

@@ -1,7 +1,8 @@
 import styles from "./PortfolioNav.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const pLinks = [
+  { name: "applications", link: "/portfolio/applications" },
   { name: "games", link: "/portfolio/games" },
   { name: "experiments", link: "/portfolio/experiments" },
   { name: "interactive SVGs", link: "/portfolio/intSVGs" },
@@ -13,8 +14,18 @@ export function PortfolioNav() {
   return (
     <>
       <div className={styles.subnavHolder}>
-        {pLinks.map((plink) => {
-          return <Link to={plink.link}>{plink.name}</Link>;
+        {pLinks.map(({ name, link }) => {
+          return (
+            <NavLink
+              key={`mobile_${name}`}
+              to={link}
+              className={({ isActive }) => {
+                return isActive ? styles.active : styles.inactive;
+              }}
+            >
+              {name}
+            </NavLink>
+          );
         })}
       </div>
     </>

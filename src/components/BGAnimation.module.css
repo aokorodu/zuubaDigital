@@ -7,4 +7,5 @@
   user-select: none;
   -moz-user-select: none;
   pointer-events: none;
+  z-index: -100;
 }

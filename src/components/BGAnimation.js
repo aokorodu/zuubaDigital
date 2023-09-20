@@ -1,8 +1,9 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./BGAnimation.module.css";
 import BGParticle from "./BGParticle";
 export function BGAnimation() {
   const holderRef = useRef(null);
+  const numberOfParticles = 500;
   const particleRefs = useRef([]);
   const addToRefs = (el) => {
     if (el && !particleRefs.current.includes(el)) {
@@ -12,14 +13,25 @@ export function BGAnimation() {
 
   const buildParticles = () => {
     const arr = [];
-    for (let i = 0; i < 100; i++) {
-      const x = Math.random() * 1000;
-      const y = Math.random() * 1000;
-      arr.push(<BGParticle ref={addToRefs} x={x} y={y} />);
+    for (let i = 0; i < numberOfParticles; i++) {
+      arr.push(<BGParticle ref={addToRefs} index={i} />);
     }
 
     return arr;
   };
+
+  useEffect(() => {
+    console.log("use effect");
+    draw();
+  }, []);
+
+  const draw = () => {
+    for (let i = 0; i < numberOfParticles; i++) {
+      particleRefs.current[i].update();
+    }
+    window.requestAnimationFrame(draw);
+  };
+
   return (
     <div className={styles.svgHolder}>
       <svg
@@ -29,14 +41,6 @@ export function BGAnimation() {
         preserveAspectRatio="xMidYMid slice"
       >
         <g ref={holderRef}>{buildParticles()}</g>
-        <rect
-          x={400}
-          y={400}
-          width={200}
-          height={200}
-          fill="red"
-          opacity={0.1}
-        />
       </svg>
     </div>
   );

@@ -3,7 +3,7 @@ import styles from "./BGAnimation.module.css";
 import BGParticle from "./BGParticle";
 export function BGAnimation() {
   const holderRef = useRef(null);
-  const numberOfParticles = 500;
+  const numberOfParticles = 300;
   const particleRefs = useRef([]);
   const addToRefs = (el) => {
     if (el && !particleRefs.current.includes(el)) {
@@ -14,7 +14,7 @@ export function BGAnimation() {
   const buildParticles = () => {
     const arr = [];
     for (let i = 0; i < numberOfParticles; i++) {
-      arr.push(<BGParticle ref={addToRefs} index={i} />);
+      arr.push(<BGParticle key={i} ref={addToRefs} index={i} />);
     }
 
     return arr;

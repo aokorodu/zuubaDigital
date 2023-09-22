@@ -1,0 +1,27 @@
+.holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: fit-content;
+  max-width: 800px;
+  padding: 2rem;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.description {
+  font-family: "Kanit", cursive;
+  font-weight: 300;
+}
+
+a {
+  display: block;
+}

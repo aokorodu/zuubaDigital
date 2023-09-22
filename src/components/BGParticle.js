@@ -26,6 +26,10 @@ class BGParticle extends React.Component {
       this.holder = document.querySelector(`#circ_${this.index}`);
       this.line = document.querySelector(`#line_${this.index}`);
     }
+    this.sinFlow();
+  }
+
+  sinFlow() {
     this.position.x += this.speed;
     if (this.position.x > 1000 + this.r) this.position.x = -this.r;
     this.radians = Math.PI * 2 * (this.position.x / 1000);

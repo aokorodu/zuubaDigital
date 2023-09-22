@@ -1,3 +1,11 @@
+import styles from "./Home.module.css";
+
 export function Home() {
-  return <h1>zuubaDigital</h1>;
+  return (
+    <>
+      <div className={styles.holder}>
+        <div className={styles.title}>zuubaDigital</div>
+      </div>
+    </>
+  );
 }

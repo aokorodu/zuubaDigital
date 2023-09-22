@@ -23,7 +23,7 @@ function App() {
         <Route path="/" element={<PageLayout />}>
           <Route index element={<Home />} />
           <Route path="/portfolio" element={<PortfolioLayout />}>
-            <Route index element={<Portfolio />} />
+            <Route index element={<Applications />} />
             <Route path="games" element={<Game />} />
             <Route path="experiments" element={<Experiment />} />
             <Route path="applications" element={<Applications />} />

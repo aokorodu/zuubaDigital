@@ -4,11 +4,6 @@ import styles from "./Applications.module.css";
 export function Applications() {
   const apps = [
     {
-      title: "zuubaDigital portfolio",
-      description:
-        "My online portfolio, built with React. You're looking at it",
-    },
-    {
       title: "Motion Generator",
       description:
         "Designed to demonstrate various types of CSS/Javascript animations and easing functions (desktop only)",
@@ -33,6 +28,11 @@ export function Applications() {
       description:
         "A more abstract, artistic version of the Interactive 401k visualizer with particle effects, built using canvas/PixiJS (desktop only)",
       links: [{ name: "link", link: "https://aokorodu.github.io/portfolio/" }],
+    },
+    {
+      title: "zuubaDigital portfolio",
+      description:
+        "My online portfolio, built with React. You're looking at it",
     },
   ];
   return (

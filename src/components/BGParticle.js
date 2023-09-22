@@ -3,7 +3,7 @@ import React from "react";
 class BGParticle extends React.Component {
   constructor({ index }) {
     super();
-    this.midline = 600;
+    this.midline = 500;
     this.index = index;
     this.x = Math.random() * 1000;
     this.speed = 0.5;
@@ -52,10 +52,10 @@ class BGParticle extends React.Component {
             cy={0}
             r={this.r}
             fill={this.color}
-            fillOpacity={0.2}
-            stroke={this.color}
-            strokeOpacity={0.3}
-            strokeWidth={5}
+            fillOpacity={0.3}
+            stroke={"black"}
+            strokeOpacity={0.15}
+            strokeWidth={1}
           />
 
           {/* <circle cx={0} cy={0} r={this.r / 2} fill={this.color} opacity={0.05} /> */}

@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.bgImage {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./assets/greyscale.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

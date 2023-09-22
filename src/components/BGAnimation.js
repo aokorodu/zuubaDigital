@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import styles from "./BGAnimation.module.css";
 import BGParticle from "./BGParticle";
+import bg from "../assets/greyscale.png";
+
 export function BGAnimation() {
   const holderRef = useRef(null);
   const numberOfParticles = 300;

@@ -5,7 +5,7 @@ import { About } from "./pages/About";
 import { Portfolio } from "./pages/Portfolio";
 import { MainNav } from "./components/MainNav";
 import { Contact } from "./pages/Contact";
-import { BGAnimation } from "./components/BGAnimation";
+import BGAnimation from "./components/BGAnimation";
 import { Game } from "./pages/Types/Game";
 import { Experiment } from "./pages/Types/Experiment";
 import { Applications } from "./pages/Types/Applications";
@@ -14,11 +14,22 @@ import { IntSVGs } from "./pages/Types/IntSVGs";
 import { Prototypes } from "./pages/Types/Prototypes";
 import { PageLayout } from "./pages/PageLayout";
 import { GenArt } from "./pages/Types/GenArt";
+import { useEffect, useRef } from "react";
 
 function App() {
+  const anim = useRef(null);
+  useEffect(() => {
+    console.log("useeffect");
+    anim.current.draw();
+  }, []);
+
+  const navCallback = (section) => {
+    console.log("section: ", section);
+  };
+
   return (
     <>
-      <BGAnimation />
+      <BGAnimation ref={anim} />
       <Routes>
         <Route path="/" element={<PageLayout />}>
           <Route index element={<Home />} />
@@ -35,7 +46,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>
-      <MainNav />
+      <MainNav callback={navCallback} />
     </>
   );
 }

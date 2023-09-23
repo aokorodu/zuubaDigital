@@ -2,7 +2,6 @@ import styles from "./PortfolioItem.module.css";
 import { Link } from "react-router-dom";
 
 export function PortfolioItem({ title, description, tech, links }) {
-  console.log("link: ", links);
   return (
     <>
       <div className={styles.holder}>

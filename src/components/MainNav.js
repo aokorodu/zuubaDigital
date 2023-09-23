@@ -11,7 +11,7 @@ const navigation = [
   { name: "contact", link: "/contact" },
 ];
 
-export function MainNav() {
+export function MainNav({ callback }) {
   const mobileLinkHolder = useRef(null);
   const [open, setOpen] = useState(false);
   const toggleOpen = () => {
@@ -41,6 +41,9 @@ export function MainNav() {
                 to={link}
                 className={({ isActive }) => {
                   return isActive ? styles.active : styles.inactive;
+                }}
+                onClick={() => {
+                  callback(name);
                 }}
               >
                 {name}

@@ -1,49 +1,50 @@
-import { useEffect, useRef } from "react";
+import React from "react";
 import styles from "./BGAnimation.module.css";
 import BGParticle from "./BGParticle";
-import bg from "../assets/greyscale.png";
 
-export function BGAnimation() {
-  const holderRef = useRef(null);
-  const numberOfParticles = 300;
-  const particleRefs = useRef([]);
-  const addToRefs = (el) => {
-    if (el && !particleRefs.current.includes(el)) {
-      particleRefs.current.push(el);
-    }
-  };
+class BGAnimation extends React.Component {
+  constructor() {
+    super();
+    this.holder = null;
+    this.numberOfParticles = 300;
+    this.particles = React.createRef([]);
+    this.particles.current = [];
+  }
 
-  const buildParticles = () => {
+  buildParticles = () => {
     const arr = [];
-    for (let i = 0; i < numberOfParticles; i++) {
-      arr.push(<BGParticle key={i} ref={addToRefs} index={i} />);
+    for (let i = 0; i < this.numberOfParticles; i++) {
+      arr.push(<BGParticle ref={this.addToRefs} key={i} index={i} />);
     }
 
     return arr;
   };
 
-  useEffect(() => {
-    console.log("use effect");
-    draw();
-  }, []);
-
-  const draw = () => {
-    for (let i = 0; i < numberOfParticles; i++) {
-      particleRefs.current[i].update();
-    }
-    window.requestAnimationFrame(draw);
+  addToRefs = (el) => {
+    this.particles.current.push(el);
   };
 
-  return (
-    <div className={styles.svgHolder}>
-      <svg
-        width="100%"
-        height={"100%"}
-        viewBox="0 0 1000 1000"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <g ref={holderRef}>{buildParticles()}</g>
-      </svg>
-    </div>
-  );
+  draw = () => {
+    for (let i = 0; i < this.numberOfParticles; i++) {
+      this.particles.current[i].update();
+    }
+    window.requestAnimationFrame(this.draw);
+  };
+
+  render() {
+    return (
+      <div className={styles.svgHolder}>
+        <svg
+          width="100%"
+          height={"100%"}
+          viewBox="0 0 1000 1000"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <g>{this.buildParticles()}</g>
+        </svg>
+      </div>
+    );
+  }
 }
+
+export default BGAnimation;

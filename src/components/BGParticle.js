@@ -14,6 +14,7 @@ class BGParticle extends React.Component {
       minRadius: 11,
       radius: 2 + Math.round(Math.random() * 11),
       gravity: new PVector(0, 0.4),
+      floatVelocity: new PVector(0, -0.1 - Math.random() * 2),
       acceleration: new PVector(0, 0.4),
       velocity: new PVector(0, 0),
       position: new PVector(
@@ -27,7 +28,7 @@ class BGParticle extends React.Component {
         bottom: 0,
       },
       flowStart: new PVector(500, 1000),
-      reset: function () {
+      resetFlow: function () {
         this.position = new PVector(this.flowStart.x, this.flowStart.y);
         this.velocity = new PVector(
           2 - Math.random() * 4,
@@ -41,10 +42,9 @@ class BGParticle extends React.Component {
       },
       restartFlowIfNeeded: function () {
         if (this.position.y > this.boundary.top) {
-          this.reset();
+          this.resetFlow();
           return;
         }
-
         if (this.position.x > this.boundary.right) {
           this.position.x = this.boundary.right;
           this.velocity.x *= -1;

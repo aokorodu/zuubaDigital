@@ -25,6 +25,8 @@ function App() {
 
   const navCallback = (section) => {
     console.log("section: ", section);
+    if (section === "about") anim.current.changeFlow("waterFlow");
+    if (section === "home") anim.current.changeFlow("sin");
   };
 
   return (

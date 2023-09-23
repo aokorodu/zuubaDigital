@@ -20,6 +20,17 @@ class BGAnimation extends React.Component {
     return arr;
   };
 
+  changeFlow(newFlow) {
+    console.log("changeFlow to ", newFlow);
+    this.particles.current.map((particle) => {
+      particle.changeFlow(newFlow);
+    });
+  }
+
+  testFunction() {
+    console.log("testFunction");
+  }
+
   addToRefs = (el) => {
     this.particles.current.push(el);
   };

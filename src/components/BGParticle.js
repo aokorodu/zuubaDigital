@@ -53,6 +53,15 @@ class BGParticle extends React.Component {
           this.velocity.x *= -1;
         }
       },
+      float: function () {
+        this.position.add(this.floatVelocity);
+        this.restartFloatIfNeeded();
+      },
+      restartFloatIfNeeded: function () {
+        if (this.position.y < this.boundary.bottom - this.radius) {
+          this.position.y = this.boundary.top + this.radius;
+        }
+      },
     };
 
     // trig vars
@@ -147,6 +156,10 @@ class BGParticle extends React.Component {
 
       case "waterFlow":
         this.physics.waterFlow();
+        break;
+
+      case "float":
+        this.physics.float();
         break;
     }
 

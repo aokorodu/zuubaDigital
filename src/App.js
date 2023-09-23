@@ -27,6 +27,7 @@ function App() {
     console.log("section: ", section);
     if (section === "about") anim.current.changeFlow("waterFlow");
     if (section === "home") anim.current.changeFlow("sin");
+    if (section === "portfolio") anim.current.changeFlow("float");
   };
 
   return (

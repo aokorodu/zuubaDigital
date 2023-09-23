@@ -65,7 +65,11 @@ class BGParticle extends React.Component {
         if (this.position.y < this.boundary.bottom - this.radius) {
           this.position.y = this.boundary.top + this.radius;
           this.position.x = Math.random() * (1000 - this.radius);
+          this.initFloatVelocity();
         }
+      },
+      initFloatVelocity: function () {
+        this.floatVelocity = new PVector(0, -this.radius / 10);
       },
       orbit: function () {
         const targetV = new PVector(500, 500);
@@ -133,7 +137,6 @@ class BGParticle extends React.Component {
 
         if (!this.readyToStartSinFlow) return;
 
-        console.log("sinflowing");
         currentPos.x += this.speed;
         if (currentPos.x > 1000 + rad) currentPos.x = -rad;
         this.setRadians(Math.PI * 2 * (currentPos.x / 1000));
@@ -183,6 +186,10 @@ class BGParticle extends React.Component {
 
       case "orbit":
         this.physics.orbit();
+        break;
+
+      default:
+        this.trig.sinFlow(this.physics);
         break;
     }
 

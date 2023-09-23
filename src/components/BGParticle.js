@@ -15,13 +15,13 @@ class BGParticle extends React.Component {
     this.midline = 500;
     this.index = index;
 
-    this.speed = 0.5;
-    this.minRadius = 8;
-    this.r = 3 + Math.round(Math.random() * this.minRadius);
+    this.speed = 1;
+    this.minRadius = 11;
+    this.r = 2 + Math.round(Math.random() * this.minRadius);
 
     // physics vars
     // -- gravity
-    this.acceleration = new PVector(0, 0.1);
+    this.acceleration = new PVector(0, 0.4);
     this.velocity = new PVector(0, 0);
 
     // sin vars
@@ -41,7 +41,7 @@ class BGParticle extends React.Component {
 
     // color vars
     this.hue = Math.round(Math.random() * 360);
-    this.color = `hsl(${this.hue}, 50%, 90%)`;
+    this.color = `hsl(${this.hue}, 50%, 80%)`;
 
     this.holder = null;
 
@@ -147,7 +147,10 @@ class BGParticle extends React.Component {
 
   reset() {
     this.position = new PVector(this.flowStart.x, this.flowStart.y);
-    this.velocity = new PVector(1 - Math.random() * 2, -7 - Math.random() * 6);
+    this.velocity = new PVector(
+      2 - Math.random() * 4,
+      -14 - Math.random() * 12
+    );
   }
 
   draw() {
@@ -169,11 +172,11 @@ class BGParticle extends React.Component {
             cx={0}
             cy={0}
             r={this.r}
-            fill={this.color}
-            fillOpacity={0.3}
-            stroke={"black"}
-            strokeOpacity={0.15}
-            strokeWidth={1}
+            fill={"white"}
+            fillOpacity={0.2}
+            stroke={"white"}
+            strokeOpacity={0.3}
+            strokeWidth={5}
           />
 
           {/* <circle cx={0} cy={0} r={this.r / 2} fill={this.color} opacity={0.05} /> */}

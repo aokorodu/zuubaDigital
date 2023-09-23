@@ -28,6 +28,10 @@ class BGParticle extends React.Component {
         bottom: 0,
       },
       flowStart: new PVector(500, 1000),
+      initFlow: function () {
+        this.acceleration = new PVector(0, 0.4);
+        this.velocity = new PVector(0, 0);
+      },
       resetFlow: function () {
         this.position = new PVector(this.flowStart.x, this.flowStart.y);
         this.velocity = new PVector(
@@ -60,7 +64,22 @@ class BGParticle extends React.Component {
       restartFloatIfNeeded: function () {
         if (this.position.y < this.boundary.bottom - this.radius) {
           this.position.y = this.boundary.top + this.radius;
+          this.position.x = Math.random() * (1000 - this.radius);
         }
+      },
+      orbit: function () {
+        const targetV = new PVector(500, 500);
+        targetV.sub(this.position);
+        targetV.normalize();
+        targetV.multiply(0.1);
+        this.move(targetV);
+        this.velocity.multiply(0.999);
+      },
+      move: function (newForce) {
+        this.acceleration.add(newForce);
+        this.velocity.add(this.acceleration);
+        this.position.add(this.velocity);
+        this.acceleration = new PVector(0, 0);
       },
     };
 
@@ -141,7 +160,7 @@ class BGParticle extends React.Component {
   changeFlow(newFlow) {
     this.flow = newFlow;
     this.trig.readyToStartSinFlow = false;
-    if (this.flow === "waterFlow") this.physics.velocity.y = 0;
+    if (this.flow === "waterFlow") this.physics.initFlow();
   }
 
   update() {
@@ -160,6 +179,10 @@ class BGParticle extends React.Component {
 
       case "float":
         this.physics.float();
+        break;
+
+      case "orbit":
+        this.physics.orbit();
         break;
     }
 

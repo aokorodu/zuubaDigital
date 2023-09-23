@@ -5,39 +5,60 @@ class BGParticle extends React.Component {
   constructor({ index }) {
     super();
 
-    // boundary, position stuff;
-    this.right = 1000;
-    this.left = 0;
-    this.top = 1000;
-    this.bottom = 0;
-
-    this.flowStart = new PVector(500, 1000);
-    this.midline = 500;
     this.index = index;
 
-    this.speed = 1;
-    this.minRadius = 11;
-    this.r = 2 + Math.round(Math.random() * this.minRadius);
+    // boundary, position stuff;
+    this.boundary = {
+      right: 1000,
+      left: 0,
+      top: 1000,
+      bottom: 0,
+    };
 
     // physics vars
-    // -- gravity
-    this.acceleration = new PVector(0, 0.4);
-    this.velocity = new PVector(0, 0);
+    this.physics = {
+      minRadius: 11,
+      radius: 2 + Math.round(Math.random() * 11),
+      gravity: new PVector(0, 0.4),
+      acceleration: new PVector(0, 0.4),
+      velocity: new PVector(0, 0),
+      position: new PVector(
+        Math.random() * 1000,
+        Math.random() > 0.5 ? 0 : 1000
+      ),
+      flowStart: new PVector(500, 1000),
+      reset: function () {
+        this.position = new PVector(this.flowStart.x, this.flowStart.y);
+        this.velocity = new PVector(
+          2 - Math.random() * 4,
+          -14 - Math.random() * 12
+        );
+      },
+    };
+
+    // trig vars
+    this.trig = {
+      speed: 1,
+      midline: 500,
+      readyToStartSinFlow: false,
+      isSin: Math.random() > 0.5 ? true : false,
+      amplitude: Math.round(Math.random() * 200),
+      radians: null,
+      setRadians: function (newRadians) {
+        this.radians = newRadians;
+      },
+      get ypos() {
+        const pos = this.isSin
+          ? this.midline + Math.sin(this.radians) * this.amplitude
+          : this.midline + Math.cos(this.radians) * this.amplitude;
+        return pos;
+      },
+    };
 
     // sin vars
-    this.amplitude = Math.round(Math.random() * 200);
-    this.position = new PVector(
-      Math.random() * 1000,
-      Math.random() > 0.5 ? 0 : 1000
-    );
-    this.radians = Math.PI * 2 * (this.position.x / 1000);
-    this.isSin = Math.random() > 0.5 ? true : false;
-    const ypos = this.isSin
-      ? this.midline + Math.sin(this.radians) * this.amplitude
-      : this.midline + Math.cos(this.radians) * this.amplitude;
-    this.target = new PVector(this.position.x, ypos);
 
-    this.hitTarget = false;
+    this.trig.setRadians(Math.PI * 2 * (this.physics.position.x / 1000));
+    this.target = new PVector(this.physics.position.x, this.trig.ypos);
 
     // color vars
     this.hue = Math.round(Math.random() * 360);
@@ -50,8 +71,8 @@ class BGParticle extends React.Component {
 
   changeFlow(newFlow) {
     this.flow = newFlow;
-    this.hitTarget = false;
-    if (this.flow === "waterFlow") this.velocity.y = 0;
+    this.trig.readyToStartSinFlow = false;
+    if (this.flow === "waterFlow") this.physics.velocity.y = 0;
   }
 
   update() {
@@ -73,90 +94,77 @@ class BGParticle extends React.Component {
   }
 
   // sinFlow ------------
-  restartSinFlow() {
-    this.hitTarget = false;
-    this.x = Math.random() * 1000;
-    this.amplitude = Math.round(Math.random() * 200);
-    const ypos = this.isSin
-      ? Math.sin(this.radians) * this.amplitude
-      : Math.cos(this.radians) * this.amplitude;
-    this.target = new PVector(Math.random() * 1000, ypos);
-  }
 
   inSinPosition() {
-    const dist = PVector.GetDistance(this.position, this.target);
+    const dist = PVector.GetDistance(this.physics.position, this.target);
     const isClose = dist < 1 ? true : false;
 
     return isClose;
   }
 
   moveToSinPosition() {
-    const dx = this.target.x - this.position.x;
+    const dx = this.target.x - this.physics.position.x;
     const moveX = dx / 10;
-    this.position.x += moveX;
+    this.physics.position.x += moveX;
 
-    const dy = this.target.y - this.position.y;
+    const dy = this.target.y - this.physics.position.y;
     const moveY = dy / 10;
-    this.position.y += moveY;
+    this.physics.position.y += moveY;
   }
 
   sinFlow() {
-    console.log("this.hitTarget? ", this.hitTarget);
-    if (!this.hitTarget) {
+    console.log(
+      "this.trig.readyToStartSinFlow? ",
+      this.trig.readyToStartSinFlow
+    );
+    if (!this.trig.readyToStartSinFlow) {
       if (this.inSinPosition()) {
-        this.hitTarget = true;
+        this.trig.readyToStartSinFlow = true;
       } else {
         this.moveToSinPosition();
         return;
       }
     }
 
-    if (!this.hitTarget) return;
+    if (!this.trig.readyToStartSinFlow) return;
 
     console.log("sinflowing");
-    this.position.x += this.speed;
-    if (this.position.x > 1000 + this.r) this.position.x = -this.r;
-    this.radians = Math.PI * 2 * (this.position.x / 1000);
+    this.physics.position.x += this.trig.speed;
+    if (this.physics.position.x > 1000 + this.physics.radius)
+      this.physics.position.x = -this.physics.radius;
+    this.trig.setRadians(Math.PI * 2 * (this.physics.position.x / 1000));
 
-    this.position.y = this.isSin
-      ? this.midline + Math.sin(this.radians) * this.amplitude
-      : this.midline + Math.cos(this.radians) * this.amplitude;
+    this.physics.position.y = this.trig.isSin
+      ? this.trig.midline + Math.sin(this.trig.radians) * this.trig.amplitude
+      : this.trig.midline + Math.cos(this.trig.radians) * this.trig.amplitude;
   }
 
   // waterFlow ---------
   waterFlow() {
-    this.velocity.add(this.acceleration);
-    this.position.add(this.velocity);
+    this.physics.velocity.add(this.physics.acceleration);
+    this.physics.position.add(this.physics.velocity);
     this.restartFlowIfNeeded();
   }
 
   restartFlowIfNeeded() {
-    if (this.position.y > this.top) {
-      this.reset();
+    if (this.physics.position.y > this.boundary.top) {
+      this.physics.reset();
       return;
     }
 
-    if (this.position.x > this.right) {
-      this.position.x = this.right;
-      this.velocity.x *= -1;
-    } else if (this.position.x < this.r) {
-      this.position.x = this.r;
-      this.velocity.x *= -1;
+    if (this.physics.position.x > this.boundary.right) {
+      this.physics.position.x = this.boundary.right;
+      this.physics.velocity.x *= -1;
+    } else if (this.physics.position.x < this.physics.radius) {
+      this.physics.position.x = this.physics.radius;
+      this.physics.velocity.x *= -1;
     }
-  }
-
-  reset() {
-    this.position = new PVector(this.flowStart.x, this.flowStart.y);
-    this.velocity = new PVector(
-      2 - Math.random() * 4,
-      -14 - Math.random() * 12
-    );
   }
 
   draw() {
     this.holder.setAttribute(
       "transform",
-      `translate(${this.position.x} ${this.position.y})`
+      `translate(${this.physics.position.x} ${this.physics.position.y})`
     );
   }
 
@@ -166,12 +174,12 @@ class BGParticle extends React.Component {
         <g
           key={`g_${this.index}`}
           id={`circ_${this.index}`}
-          transform={`translate(${this.position.x} ${this.position.y})`}
+          transform={`translate(${this.physics.position.x} ${this.physics.position.y})`}
         >
           <circle
             cx={0}
             cy={0}
-            r={this.r}
+            r={this.physics.radius}
             fill={"white"}
             fillOpacity={0.2}
             stroke={"white"}
@@ -179,7 +187,7 @@ class BGParticle extends React.Component {
             strokeWidth={5}
           />
 
-          {/* <circle cx={0} cy={0} r={this.r / 2} fill={this.color} opacity={0.05} /> */}
+          {/* <circle cx={0} cy={0} r={this.physics.radius / 2} fill={this.color} opacity={0.05} /> */}
         </g>
       </>
     );

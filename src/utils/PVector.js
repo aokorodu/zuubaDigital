@@ -25,6 +25,11 @@ class PVector {
     return new PVector(x, y);
   }
 
+  static GetDistance(v1, v2) {
+    const dv = this.Subtract(v1, v2);
+    return Math.sqrt(dv.x * dv.x + dv.y * dv.y);
+  }
+
   multiply(num) {
     this.x *= num;
     this.y *= num;

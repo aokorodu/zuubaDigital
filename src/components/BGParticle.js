@@ -14,7 +14,7 @@ class BGParticle extends React.Component {
     this.flowStart = new PVector(500, 1000);
     this.midline = 500;
     this.index = index;
-    this.x = Math.random() * 1000;
+
     this.speed = 0.5;
     this.minRadius = 8;
     this.r = 3 + Math.round(Math.random() * this.minRadius);
@@ -25,11 +25,19 @@ class BGParticle extends React.Component {
     this.velocity = new PVector(0, 0);
 
     // sin vars
-    this.isSin = Math.random() > 0.5 ? true : false;
-    this.radians = this.x;
     this.amplitude = Math.round(Math.random() * 200);
-    this.y = 0 + Math.cos(this.radians) * this.amplitude;
-    this.position = new PVector(this.x, this.y);
+    this.position = new PVector(
+      Math.random() * 1000,
+      Math.random() > 0.5 ? 0 : 1000
+    );
+    this.radians = Math.PI * 2 * (this.position.x / 1000);
+    this.isSin = Math.random() > 0.5 ? true : false;
+    const ypos = this.isSin
+      ? this.midline + Math.sin(this.radians) * this.amplitude
+      : this.midline + Math.cos(this.radians) * this.amplitude;
+    this.target = new PVector(this.position.x, ypos);
+
+    this.hitTarget = false;
 
     // color vars
     this.hue = Math.round(Math.random() * 360);
@@ -42,6 +50,7 @@ class BGParticle extends React.Component {
 
   changeFlow(newFlow) {
     this.flow = newFlow;
+    this.hitTarget = false;
   }
 
   update() {
@@ -51,31 +60,63 @@ class BGParticle extends React.Component {
 
     switch (this.flow) {
       case "sin":
-        this.midline = this.position.y;
         this.sinFlow();
         break;
 
       case "waterFlow":
         this.waterFlow();
         break;
-
-      default:
-        this.sinFlow();
     }
 
     this.draw();
   }
 
   // sinFlow ------------
+  restartSinFlow() {
+    this.hitTarget = false;
+    this.x = Math.random() * 1000;
+    this.amplitude = Math.round(Math.random() * 200);
+    const ypos = this.isSin
+      ? Math.sin(this.radians) * this.amplitude
+      : Math.cos(this.radians) * this.amplitude;
+    this.target = new PVector(Math.random() * 1000, ypos);
+  }
+
+  inSinPosition() {
+    const dist = PVector.GetDistance(this.position, this.target);
+    const isClose = dist < 1 ? true : false;
+
+    return isClose;
+  }
+
+  moveToSinPosition() {
+    const dx = this.target.x - this.position.x;
+    const moveX = dx / 10;
+    this.position.x += moveX;
+
+    const dy = this.target.y - this.position.y;
+    const moveY = dy / 10;
+    this.position.y += moveY;
+  }
+
   sinFlow() {
-    if (this.midline != 500) {
-      this.midline = this.midline + (500 - this.position.y) / 10;
+    console.log("this.hitTarget? ", this.hitTarget);
+    if (!this.hitTarget) {
+      if (this.inSinPosition()) {
+        this.hitTarget = true;
+      } else {
+        this.moveToSinPosition();
+        return;
+      }
     }
+
+    if (!this.hitTarget) return;
+
+    console.log("sinflowing");
     this.position.x += this.speed;
     if (this.position.x > 1000 + this.r) this.position.x = -this.r;
     this.radians = Math.PI * 2 * (this.position.x / 1000);
-    if (Math.abs(this.midline - 500) > 1) {
-    }
+
     this.position.y = this.isSin
       ? this.midline + Math.sin(this.radians) * this.amplitude
       : this.midline + Math.cos(this.radians) * this.amplitude;

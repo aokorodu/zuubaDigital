@@ -51,6 +51,7 @@ class BGParticle extends React.Component {
   changeFlow(newFlow) {
     this.flow = newFlow;
     this.hitTarget = false;
+    if (this.flow === "waterFlow") this.velocity.y = 0;
   }
 
   update() {

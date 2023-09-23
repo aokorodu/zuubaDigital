@@ -12,3 +12,9 @@
   font-weight: 100;
   color: #484848;
 }
+
+.subtitle {
+  letter-spacing: 1vw;
+  transform: translateY(-0.1rem);
+  font-size: 0.9rem;
+}

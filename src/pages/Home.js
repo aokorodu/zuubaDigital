@@ -5,6 +5,7 @@ export function Home() {
     <>
       <div className={styles.holder}>
         <div className={styles.title}>zuubaDigital</div>
+        <div className={styles.subtitle}>creative dev</div>
       </div>
     </>
   );

@@ -91,6 +91,29 @@ class BGParticle extends React.Component {
         const moveY = dy / 10;
         currentPos.y += moveY;
       },
+      sinFlow: function (physics) {
+        const currentPos = physics.position;
+        const rad = physics.radius;
+        if (!this.readyToStartSinFlow) {
+          if (this.inSinPosition(currentPos)) {
+            this.readyToStartSinFlow = true;
+          } else {
+            this.moveToSinPosition(currentPos);
+            return;
+          }
+        }
+
+        if (!this.readyToStartSinFlow) return;
+
+        console.log("sinflowing");
+        currentPos.x += this.speed;
+        if (currentPos.x > 1000 + rad) currentPos.x = -rad;
+        this.setRadians(Math.PI * 2 * (currentPos.x / 1000));
+
+        currentPos.y = this.isSin
+          ? this.midline + Math.sin(this.radians) * this.amplitude
+          : this.midline + Math.cos(this.radians) * this.amplitude;
+      },
     };
 
     // sin vars
@@ -119,7 +142,7 @@ class BGParticle extends React.Component {
 
     switch (this.flow) {
       case "sin":
-        this.sinFlow();
+        this.trig.sinFlow(this.physics);
         break;
 
       case "waterFlow":
@@ -128,41 +151,6 @@ class BGParticle extends React.Component {
     }
 
     this.draw();
-  }
-
-  // sinFlow ------------
-
-  moveToSinPosition() {
-    const dx = this.trig.target.x - this.physics.position.x;
-    const moveX = dx / 10;
-    this.physics.position.x += moveX;
-
-    const dy = this.trig.target.y - this.physics.position.y;
-    const moveY = dy / 10;
-    this.physics.position.y += moveY;
-  }
-
-  sinFlow() {
-    if (!this.trig.readyToStartSinFlow) {
-      if (this.trig.inSinPosition(this.physics.position)) {
-        this.trig.readyToStartSinFlow = true;
-      } else {
-        this.trig.moveToSinPosition(this.physics.position);
-        return;
-      }
-    }
-
-    if (!this.trig.readyToStartSinFlow) return;
-
-    console.log("sinflowing");
-    this.physics.position.x += this.trig.speed;
-    if (this.physics.position.x > 1000 + this.physics.radius)
-      this.physics.position.x = -this.physics.radius;
-    this.trig.setRadians(Math.PI * 2 * (this.physics.position.x / 1000));
-
-    this.physics.position.y = this.trig.isSin
-      ? this.trig.midline + Math.sin(this.trig.radians) * this.trig.amplitude
-      : this.trig.midline + Math.cos(this.trig.radians) * this.trig.amplitude;
   }
 
   draw() {

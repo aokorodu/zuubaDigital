@@ -8,12 +8,6 @@ class BGParticle extends React.Component {
     this.index = index;
 
     // boundary, position stuff;
-    this.boundary = {
-      right: 1000,
-      left: 0,
-      top: 1000,
-      bottom: 0,
-    };
 
     // physics vars
     this.physics = {
@@ -26,6 +20,12 @@ class BGParticle extends React.Component {
         Math.random() * 1000,
         Math.random() > 0.5 ? 0 : 1000
       ),
+      boundary: {
+        right: 1000,
+        left: 0,
+        top: 1000,
+        bottom: 0,
+      },
       flowStart: new PVector(500, 1000),
       reset: function () {
         this.position = new PVector(this.flowStart.x, this.flowStart.y);
@@ -33,6 +33,25 @@ class BGParticle extends React.Component {
           2 - Math.random() * 4,
           -14 - Math.random() * 12
         );
+      },
+      waterFlow: function () {
+        this.velocity.add(this.acceleration);
+        this.position.add(this.velocity);
+        this.restartFlowIfNeeded();
+      },
+      restartFlowIfNeeded: function () {
+        if (this.position.y > this.boundary.top) {
+          this.reset();
+          return;
+        }
+
+        if (this.position.x > this.boundary.right) {
+          this.position.x = this.boundary.right;
+          this.velocity.x *= -1;
+        } else if (this.position.x < this.radius) {
+          this.position.x = this.radius;
+          this.velocity.x *= -1;
+        }
       },
     };
 
@@ -86,7 +105,7 @@ class BGParticle extends React.Component {
         break;
 
       case "waterFlow":
-        this.waterFlow();
+        this.physics.waterFlow();
         break;
     }
 
@@ -137,28 +156,6 @@ class BGParticle extends React.Component {
     this.physics.position.y = this.trig.isSin
       ? this.trig.midline + Math.sin(this.trig.radians) * this.trig.amplitude
       : this.trig.midline + Math.cos(this.trig.radians) * this.trig.amplitude;
-  }
-
-  // waterFlow ---------
-  waterFlow() {
-    this.physics.velocity.add(this.physics.acceleration);
-    this.physics.position.add(this.physics.velocity);
-    this.restartFlowIfNeeded();
-  }
-
-  restartFlowIfNeeded() {
-    if (this.physics.position.y > this.boundary.top) {
-      this.physics.reset();
-      return;
-    }
-
-    if (this.physics.position.x > this.boundary.right) {
-      this.physics.position.x = this.boundary.right;
-      this.physics.velocity.x *= -1;
-    } else if (this.physics.position.x < this.physics.radius) {
-      this.physics.position.x = this.physics.radius;
-      this.physics.velocity.x *= -1;
-    }
   }
 
   draw() {

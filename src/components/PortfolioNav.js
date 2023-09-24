@@ -2,11 +2,11 @@ import styles from "./PortfolioNav.module.css";
 import { NavLink } from "react-router-dom";
 
 const pLinks = [
-  { name: "applications", link: "/portfolio/applications" },
-  { name: "games", link: "/portfolio/games" },
   { name: "experiments", link: "/portfolio/experiments" },
   { name: "interactive SVGs", link: "/portfolio/intSVGs" },
   { name: "prototypes", link: "/portfolio/prototypes" },
+  { name: "applications", link: "/portfolio/applications" },
+  { name: "games", link: "/portfolio/games" },
   { name: "gen art", link: "/portfolio/genart" },
 ];
 

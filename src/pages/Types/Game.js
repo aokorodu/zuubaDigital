@@ -4,9 +4,21 @@ import styles from "./Applications.module.css";
 export function Game() {
   const exps = [
     {
-      title: "Matching Game",
+      title: "movantik oic challenge (video)",
       description:
-        "Select matching pairs before the time runs out! Prototype built in Svelte, final version is React",
+        "Interactive HTML5 game utilizing Leap Motion as the primary interface. The game was deployed at the AstraZeneca booth at several major Pharmaceutical Conventions. (Note: skip to 2:50 to view gameplay)",
+      tech: "Canvas, HTML, CSS, JavaScript, CreateJS, GSAP, Leap Motion.",
+      links: [
+        {
+          name: "gameplay video",
+          link: "https://www.youtube.com/watch?v=l-rUN_-Z6Jg",
+        },
+      ],
+    },
+    {
+      title: "Matching Game",
+      description: "Select matching pairs before the time runs out!",
+      tech: "Svelte (prototype), React, GSAP, SVG.",
       links: [
         {
           name: "svelte prototype",
@@ -30,6 +42,7 @@ export function Game() {
       title: "Wordle clone",
       description:
         "With the prototype, you can select both the number of letters per word and the number of attemps prototype",
+      tech: "React, CSS animations.",
       links: [
         {
           name: "prototype",
@@ -48,6 +61,7 @@ export function Game() {
     {
       title: "Spot the Difference",
       description: "Find the differences between two nearly identical images",
+      tech: "React, CSS animations, SVG.",
       links: [
         {
           name: "base version",
@@ -63,6 +77,7 @@ export function Game() {
       title: "Swipe It Poll",
       description:
         "tinder style poll app. Drag the central image to select or reject",
+      tech: "React, GSAP, CSS animations, SVG.",
       links: [
         {
           name: "base version",
@@ -78,6 +93,7 @@ export function Game() {
       title: "Plinko",
       description:
         "Physics based svg plinko game using the MatterJS physics engine",
+      tech: "React, MatterJS (physics), GSAP, SVG.",
       links: [
         {
           name: "base version",

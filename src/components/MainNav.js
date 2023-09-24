@@ -64,7 +64,10 @@ export function MainNav({ callback }) {
                   className={({ isActive }) => {
                     return isActive ? styles.active : styles.inactive;
                   }}
-                  onClick={toggleOpen}
+                  onClick={() => {
+                    toggleOpen();
+                    callback(name);
+                  }}
                 >
                   {name}
                 </NavLink>

@@ -79,12 +79,14 @@
   }
 
   .toggle {
-    position: absolute;
+    position: fixed;
     display: inline-block;
     top: 0px;
     right: 0px;
     padding: 1rem;
-    transform: scale(1.5);
+    transform: scale(1.25);
+    background: rgb(204 242 249 / 80%);
+    border-radius: 10px;
   }
 
   .linkHolder {

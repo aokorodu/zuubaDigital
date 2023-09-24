@@ -53,15 +53,24 @@ export function MainNav({ callback }) {
         </div>
 
         <div ref={mobileLinkHolder} className={styles.mobileNav}>
-          {navigation.map((item) => {
-            const name = item.name;
-            const link = item.link;
-            return (
-              <NavLink key={`mobile_${name}`} to={link} onClick={toggleOpen}>
-                {name}
-              </NavLink>
-            );
-          })}
+          <div className={styles.linkHolder}>
+            {navigation.map((item) => {
+              const name = item.name;
+              const link = item.link;
+              return (
+                <NavLink
+                  key={`mobile_${name}`}
+                  to={link}
+                  className={({ isActive }) => {
+                    return isActive ? styles.active : styles.inactive;
+                  }}
+                  onClick={toggleOpen}
+                >
+                  {name}
+                </NavLink>
+              );
+            })}
+          </div>
         </div>
         {/* ----toggle -----*/}
         <div className={styles.toggle} onClick={toggleOpen}>

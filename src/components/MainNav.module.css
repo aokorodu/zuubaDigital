@@ -68,9 +68,10 @@
     gap: 1rem;
     justify-content: flex-start;
     align-items: center;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
     height: fit-content;
     width: 100vw;
+    height: 100vh;
     transform: translateX(100vw);
     pointer-events: all;
     transition-property: all;
@@ -82,6 +83,17 @@
     display: inline-block;
     top: 0px;
     right: 0px;
+    padding: 1rem;
+    transform: scale(1.5);
+  }
+
+  .linkHolder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem auto;
+    gap: 1.25rem;
   }
 }
 
@@ -93,6 +105,22 @@
 
 .closed {
   transform: translateX(100vw);
+}
+
+.active {
+  color: black;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+}
+
+.inactive {
+  color: black;
+  font-size: 1rem;
+  font-weight: 100;
+  text-decoration: none;
+  text-align: center;
 }
 
 /* .nav {

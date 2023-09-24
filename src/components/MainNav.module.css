@@ -24,7 +24,7 @@
 
 .active {
   color: black;
-  font-size: 3rem;
+  font-size: 2rem;
   transition-property: all;
   transition-duration: var(--easing-duration);
   transition-timing-function: linear;
@@ -97,6 +97,22 @@
     margin: 5rem auto;
     gap: 1.25rem;
   }
+
+  .active {
+    color: black;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .inactive {
+    color: black;
+    font-size: 1rem;
+    font-weight: 100;
+    text-decoration: none;
+    text-align: center;
+  }
 }
 
 .open {
@@ -107,22 +123,6 @@
 
 .closed {
   transform: translateX(100vw);
-}
-
-.active {
-  color: black;
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
-  text-align: center;
-}
-
-.inactive {
-  color: black;
-  font-size: 1rem;
-  font-weight: 100;
-  text-decoration: none;
-  text-align: center;
 }
 
 /* .nav {

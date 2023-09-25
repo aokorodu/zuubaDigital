@@ -2,12 +2,12 @@ import styles from "./PortfolioNav.module.css";
 import { NavLink } from "react-router-dom";
 
 const pLinks = [
-  { name: "experiments", link: "/portfolio/experiments" },
-  { name: "interactive SVGs", link: "/portfolio/intSVGs" },
-  { name: "prototypes", link: "/portfolio/prototypes" },
-  { name: "applications", link: "/portfolio/applications" },
-  { name: "games", link: "/portfolio/games" },
-  { name: "gen art", link: "/portfolio/genart" },
+  { name: "experiments", link: "/portfoliolayout/experiments" },
+  { name: "interactive SVGs", link: "/portfoliolayout/intSVGs" },
+  { name: "prototypes", link: "/portfoliolayout/prototypes" },
+  { name: "applications", link: "/portfoliolayout/applications" },
+  { name: "games", link: "/portfoliolayout/games" },
+  { name: "gen art", link: "/portfoliolayout/genart" },
 ];
 
 export function PortfolioNav() {

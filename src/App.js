@@ -37,7 +37,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PageLayout />}>
           <Route index element={<Home />} />
-          <Route path="/portfolio" element={<PortfolioLayout />}>
+          <Route path="/portfoliolayout" element={<PortfolioLayout />}>
             <Route index element={<Experiment />} />
             <Route path="games" element={<Game />} />
             <Route path="experiments" element={<Experiment />} />
@@ -46,6 +46,7 @@ function App() {
             <Route path="prototypes" element={<Prototypes />} />
             <Route path="genart" element={<GenArt />} />
           </Route>
+          <Route path="/portfolio" element={<Portfolio />}></Route>
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Route>

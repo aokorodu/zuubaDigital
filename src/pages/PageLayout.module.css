@@ -1,5 +1,4 @@
 .holder {
   padding: 5rem 0;
-  height: 100vh;
-  overflow-y: scroll;
+  height: fit-content;
 }

@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import styles from "./PortfolioLayout.module.css";
 import { PortfolioNav } from "../components/PortfolioNav";
 

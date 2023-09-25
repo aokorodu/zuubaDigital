@@ -1,0 +1,32 @@
+.card {
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 300px;
+  height: 350px;
+  transform: scale(1);
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
+  filter: saturate(0.2);
+}
+
+.card:hover {
+  transform: scale(1.1);
+  filter: saturate(1);
+}
+
+.card > a {
+  color: black;
+}
+
+.imageHolder {
+  width: 300px;
+  height: 300px;
+  background: transparent;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+}
+
+.textHolder {
+  width: 100%;
+  text-align: center;
+  margin: 0.3rem;
+}

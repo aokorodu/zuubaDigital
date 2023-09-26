@@ -13,7 +13,9 @@ export function PortfolioTypeItem({
     <div className={styles.card}>
       <NavLink key={`ptitem_${name}`} to={link}>
         <div className={styles.imageHolder}>
-          {imagelink && <img src={imagelink} style={{ width: "100%" }} />}
+          {imagelink && (
+            <img src={imagelink} style={{ width: "100%", height: "200px" }} />
+          )}
           {videoLink && (
             // <video width="100%" height="100%">
             //   <source src={videoLink} type="video/mp4" />
@@ -21,6 +23,7 @@ export function PortfolioTypeItem({
             // </video>
             <HoverVideoPlayer
               videoSrc={videoLink}
+              sizingMode="overlay"
               restartOnPaused
               pausedOverlay={
                 <img
@@ -28,8 +31,8 @@ export function PortfolioTypeItem({
                   alt=""
                   style={{
                     // Make the image expand to cover the video's dimensions
-                    width: "100%",
-                    height: "100%",
+                    width: "200px",
+                    height: "200px",
                     objectFit: "cover",
                   }}
                 />

@@ -13,9 +13,15 @@
   gap: 2rem;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 450px) {
   .linkHolder {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 700px) {
+  .linkHolder {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

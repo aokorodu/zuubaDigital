@@ -17,11 +17,15 @@
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   max-width: 800px;
+  align-items: center;
 }
 
 .img {
   position: relative;
-  border: 2px solid black;
+  border: 10px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  overflow: hidden;
+  aspect-ratio: 1/1;
 }
 
 .img img {

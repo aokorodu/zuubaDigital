@@ -45,7 +45,7 @@ export function Portfolio() {
       <div className={styles.holder}>
         <div className={styles.linkHolder}>
           {pLinks.map((plink) => {
-            return <PortfolioTypeItem {...plink} />;
+            return <PortfolioTypeItem key={plink.name} {...plink} />;
           })}
         </div>
       </div>

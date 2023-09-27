@@ -1,14 +1,24 @@
 import styles from "./About.module.css";
 import im from "../assets/portfolio_portrait.png";
 import PageAnimator from "../components/PageAnimator";
+import { useState } from "react";
+import Spinner from "../components/Spinner";
 
 export function About() {
+  const [loaded, setLoaded] = useState(false);
   return (
     <PageAnimator>
       <div className={styles.holder}>
         <div className={styles.content}>
           <div className={styles.img}>
-            <img src={im} />
+            <img
+              src={im}
+              onLoad={() => {
+                setLoaded(true);
+              }}
+            />
+
+            {!loaded && <Spinner />}
           </div>
 
           <div className={styles.description}>

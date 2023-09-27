@@ -1,6 +1,7 @@
 import styles from "./PortfolioTypeItem.module.css";
 import HoverVideoPlayer from "react-hover-video-player";
 import { NavLink } from "react-router-dom";
+import Spinner from "./Spinner";
 
 export function PortfolioTypeItem({
   name,
@@ -34,12 +35,6 @@ export function PortfolioTypeItem({
                       }}
                     />
                   }
-
-                  //  loadingOverlay={
-                  //    <div className="loading-overlay">
-                  //      <div className="loading-spinner" />
-                  //    </div>
-                  //  }
                 />
               </>
             )}

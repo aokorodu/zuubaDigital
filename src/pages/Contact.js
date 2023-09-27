@@ -1,8 +1,9 @@
 import styles from "./Contact.module.css";
+import PageAnimator from "../components/PageAnimator";
 
 export function Contact() {
   return (
-    <>
+    <PageAnimator>
       <div className={styles.holder}>
         <div className={styles.title}>Abraham Okorodudu</div>
         <div className={styles.description}>
@@ -16,6 +17,6 @@ export function Contact() {
           </a>
         </div>
       </div>
-    </>
+    </PageAnimator>
   );
 }

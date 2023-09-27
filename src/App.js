@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
@@ -15,8 +15,10 @@ import { Prototypes } from "./pages/Types/Prototypes";
 import { PageLayout } from "./pages/PageLayout";
 import { GenArt } from "./pages/Types/GenArt";
 import { useEffect, useRef } from "react";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
+  const location = useLocation();
   const anim = useRef(null);
   useEffect(() => {
     console.log("useeffect");
@@ -34,23 +36,25 @@ function App() {
   return (
     <>
       <BGAnimation ref={anim} />
-      <Routes>
-        <Route path="/" element={<PageLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/portfoliolayout" element={<PortfolioLayout />}>
-            <Route index element={<Experiment />} />
-            <Route path="games" element={<Game />} />
-            <Route path="experiments" element={<Experiment />} />
-            <Route path="applications" element={<Applications />} />
-            <Route path="intSVGs" element={<IntSVGs />} />
-            <Route path="prototypes" element={<Prototypes />} />
-            <Route path="genart" element={<GenArt />} />
+      <AnimatePresence mode={"wait"}>
+        <Routes key={location.pathname} location={location}>
+          <Route path="/" element={<PageLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/portfoliolayout" element={<PortfolioLayout />}>
+              <Route index element={<Experiment />} />
+              <Route path="games" element={<Game />} />
+              <Route path="experiments" element={<Experiment />} />
+              <Route path="applications" element={<Applications />} />
+              <Route path="intSVGs" element={<IntSVGs />} />
+              <Route path="prototypes" element={<Prototypes />} />
+              <Route path="genart" element={<GenArt />} />
+            </Route>
+            <Route path="/portfolio" element={<Portfolio />}></Route>
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Route>
-          <Route path="/portfolio" element={<Portfolio />}></Route>
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </AnimatePresence>
       <MainNav callback={navCallback} />
     </>
   );

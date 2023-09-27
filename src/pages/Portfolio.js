@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Portfolio.module.css";
 import { PortfolioTypeItem } from "../components/PortfolioTypeItem";
+import PageAnimator from "../components/PageAnimator";
 
 const pLinks = [
   {
@@ -41,7 +42,7 @@ const pLinks = [
 ];
 export function Portfolio() {
   return (
-    <>
+    <PageAnimator>
       <div className={styles.holder}>
         <div className={styles.linkHolder}>
           {pLinks.map((plink) => {
@@ -49,6 +50,6 @@ export function Portfolio() {
           })}
         </div>
       </div>
-    </>
+    </PageAnimator>
   );
 }

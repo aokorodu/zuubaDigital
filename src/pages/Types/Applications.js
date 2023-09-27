@@ -16,7 +16,7 @@ export function Applications() {
       title: "zuubaDigital portfolio",
       description:
         "My online portfolio, built with React. You're looking at it",
-      tech: "React, React Router.",
+      tech: "React, React Router, Framer Motion for page transitions, JavaScript/CSS for particle animations.",
     },
   ];
   return (

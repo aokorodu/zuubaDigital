@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/zuubaDigital/static/css/main.2eefc519.css",
-    "main.js": "/zuubaDigital/static/js/main.54aa68a8.js",
+    "main.css": "/zuubaDigital/static/css/main.61deed86.css",
+    "main.js": "/zuubaDigital/static/js/main.a6098c4b.js",
     "static/media/portfolio_portrait.png": "/zuubaDigital/static/media/portfolio_portrait.d9265bdab75d050c09dc.png",
     "index.html": "/zuubaDigital/index.html",
-    "main.2eefc519.css.map": "/zuubaDigital/static/css/main.2eefc519.css.map",
-    "main.54aa68a8.js.map": "/zuubaDigital/static/js/main.54aa68a8.js.map"
+    "main.61deed86.css.map": "/zuubaDigital/static/css/main.61deed86.css.map",
+    "main.a6098c4b.js.map": "/zuubaDigital/static/js/main.a6098c4b.js.map"
   },
   "entrypoints": [
-    "static/css/main.2eefc519.css",
-    "static/js/main.54aa68a8.js"
+    "static/css/main.61deed86.css",
+    "static/js/main.a6098c4b.js"
   ]
 }

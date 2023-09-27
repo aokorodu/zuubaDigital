@@ -1,5 +1,6 @@
 import { PortfolioItem } from "../../components/PortfolioItem";
 import styles from "./Experiment.module.css";
+import PageAnimator from "../../components/PageAnimator";
 
 export function Experiment() {
   const exps = [
@@ -66,7 +67,7 @@ export function Experiment() {
     },
   ];
   return (
-    <>
+    <PageAnimator>
       <div className={styles.holder}>
         {exps.map((experiment) => {
           return (
@@ -76,6 +77,6 @@ export function Experiment() {
           );
         })}
       </div>
-    </>
+    </PageAnimator>
   );
 }

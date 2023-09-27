@@ -1,5 +1,6 @@
 import { PortfolioItem } from "../../components/PortfolioItem";
 import styles from "./Applications.module.css";
+import PageAnimator from "../../components/PageAnimator";
 
 export function Applications() {
   const apps = [
@@ -20,7 +21,7 @@ export function Applications() {
     },
   ];
   return (
-    <>
+    <PageAnimator>
       <div className={styles.holder}>
         {apps.map((app) => {
           return (
@@ -30,6 +31,6 @@ export function Applications() {
           );
         })}
       </div>
-    </>
+    </PageAnimator>
   );
 }

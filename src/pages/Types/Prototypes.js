@@ -1,5 +1,6 @@
 import { PortfolioItem } from "../../components/PortfolioItem";
 import styles from "./Applications.module.css";
+import PageAnimator from "../../components/PageAnimator";
 
 const protos = [
   {
@@ -31,7 +32,7 @@ const protos = [
 
 export function Prototypes() {
   return (
-    <>
+    <PageAnimator>
       <div className={styles.holder}>
         {protos.map((proto) => {
           return (
@@ -41,6 +42,6 @@ export function Prototypes() {
           );
         })}
       </div>
-    </>
+    </PageAnimator>
   );
 }

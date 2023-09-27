@@ -1,5 +1,6 @@
 import { PortfolioItem } from "../../components/PortfolioItem";
 import styles from "./Applications.module.css";
+import PageAnimator from "../../components/PageAnimator";
 
 const ints = [
   {
@@ -16,7 +17,7 @@ const ints = [
 
 export function GenArt() {
   return (
-    <>
+    <PageAnimator>
       <div className={styles.holder}>
         {ints.map((int) => {
           return (
@@ -26,6 +27,6 @@ export function GenArt() {
           );
         })}
       </div>
-    </>
+    </PageAnimator>
   );
 }

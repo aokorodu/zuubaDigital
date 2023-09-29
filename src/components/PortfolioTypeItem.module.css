@@ -12,6 +12,7 @@
   overflow: hidden;
   border: 10px solid rgba(255, 255, 255, 0.2);
   box-sizing: border-box;
+  margin: 0.5rem;
 }
 
 .card:hover {
@@ -34,5 +35,5 @@
 .textHolder {
   width: 100%;
   text-align: center;
-  margin: 1rem auto;
+  margin: 0.1rem 0.5rem 1rem;
 }

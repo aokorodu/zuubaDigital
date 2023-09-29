@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 
+import Hamburger from "./Hamburger";
+
 const navigation = [
   { name: "home", link: "/" },
   { name: "portfolio", link: "/portfolio" },
@@ -77,7 +79,9 @@ export function MainNav({ callback }) {
         </div>
         {/* ----toggle -----*/}
         <div className={styles.toggle} onClick={toggleOpen}>
-          {open ? <MdClose /> : <FaBars />}
+          <div className={styles.iconHolder}>
+            {open ? <MdClose /> : <Hamburger />}
+          </div>
         </div>
       </div>
     </>

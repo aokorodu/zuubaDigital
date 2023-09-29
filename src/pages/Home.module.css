@@ -16,7 +16,7 @@
 }
 
 .subtitle {
-  letter-spacing: 1vw;
+  letter-spacing: 0.25vw;
   transform: translateY(-0.1rem);
   font-size: 0.9rem;
   color: inherit;

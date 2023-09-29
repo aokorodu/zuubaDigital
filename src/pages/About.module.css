@@ -38,6 +38,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 1000ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
@@ -63,4 +68,18 @@
   font-weight: 300;
   width: 100%;
   margin: auto 0;
+}
+
+.initialState {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 555ms;
+  transition-timing-function: linear;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 555ms;
+  transition-timing-function: linear;
 }

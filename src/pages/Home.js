@@ -6,7 +6,8 @@ export function Home() {
     <PageAnimator>
       <div className={styles.holder}>
         <div className={styles.title}>zuubaDigital</div>
-        <div className={styles.subtitle}>creative dev</div>
+        <div className={styles.subtitle}>• Abraham Okorodudu •</div>
+        <div className={styles.subtitle}>~ creative dev ~</div>
       </div>
     </PageAnimator>
   );

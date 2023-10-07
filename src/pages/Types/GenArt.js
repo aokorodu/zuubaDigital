@@ -4,7 +4,7 @@ import { useState } from "react";
 import PageAnimator from "../../components/PageAnimator";
 
 const slides = [
-  { name: "", imagelink: "./gen_art/_let_it_flow.png" },
+  { name: "", imagelink: "./gen_art/let_it_flow.png" },
   { name: "", imagelink: "./gen_art/art_everGreen_1.png" },
   { name: "", imagelink: "./gen_art/art_everGreen_2.png" },
   { name: "", imagelink: "./gen_art/art_everGreen_3.png" },

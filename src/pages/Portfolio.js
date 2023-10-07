@@ -36,7 +36,7 @@ const pLinks = [
   },
   {
     name: "gen art",
-    link: "/portfoliolayout/genart",
+    link: "/genart",
     imagelink: "./gen_art/flow_field.png",
   },
 ];

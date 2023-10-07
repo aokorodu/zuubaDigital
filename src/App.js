@@ -13,7 +13,7 @@ import { PortfolioLayout } from "./pages/PortfolioLayout";
 import { IntSVGs } from "./pages/Types/IntSVGs";
 import { Prototypes } from "./pages/Types/Prototypes";
 import { PageLayout } from "./pages/PageLayout";
-import { GenArt } from "./pages/Types/GenArt";
+import GenArt from "./pages/Types/GenArt";
 import { useEffect, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 
@@ -47,8 +47,8 @@ function App() {
               <Route path="applications" element={<Applications />} />
               <Route path="intSVGs" element={<IntSVGs />} />
               <Route path="prototypes" element={<Prototypes />} />
-              <Route path="genart" element={<GenArt />} />
             </Route>
+            <Route path="/genart" element={<GenArt />} />
             <Route path="/portfolio" element={<Portfolio />}></Route>
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />

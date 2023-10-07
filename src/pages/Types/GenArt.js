@@ -1,6 +1,5 @@
-import { PortfolioItem } from "../../components/PortfolioItem";
-import styles from "./Applications.module.css";
-import PageAnimator from "../../components/PageAnimator";
+import Slideshow from "../../components/Slideshow";
+import { useState } from "react";
 
 const ints = [
   {
@@ -16,9 +15,16 @@ const ints = [
 ];
 
 export function GenArt() {
+  const [showSlides, setShowSlides] = useState(true);
+
+  const closeSlideshow = () => {
+    console.log("closeslideshow");
+    setShowSlides(false);
+  };
+
   return (
-    <PageAnimator>
-      <div className={styles.holder}>
+    <>
+      {/* <div className={styles.holder}>
         {ints.map((int) => {
           return (
             <>
@@ -26,7 +32,8 @@ export function GenArt() {
             </>
           );
         })}
-      </div>
-    </PageAnimator>
+      </div> */}
+      {showSlides && <Slideshow onClose={closeSlideshow} />}
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import styles from "./GenArt.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Paginator from "../../components/paginator/";
 
 const slides = [
   { name: "", imagelink: "./gen_art/let_it_flow.png" },
@@ -33,6 +34,11 @@ const GenArt = ({ onClose }) => {
   const prev = () => {
     if (index === 0) return;
     setIndex(index - 1);
+  };
+
+  const goto = (ind) => {
+    console.log("goto:", ind);
+    if (ind < totalSlides) setIndex(ind);
   };
   return (
     <>
@@ -92,6 +98,11 @@ const GenArt = ({ onClose }) => {
           </svg>
         </div>
       </div>
+      <Paginator
+        numberOfPages={slides.length}
+        pageIndex={index}
+        callback={goto}
+      />
     </>
   );
 };

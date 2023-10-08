@@ -7,7 +7,7 @@ const pLinks = [
   { name: "prototypes", link: "/portfoliolayout/prototypes" },
   { name: "applications", link: "/portfoliolayout/applications" },
   { name: "games", link: "/portfoliolayout/games" },
-  { name: "gen art", link: "/portfoliolayout/genart" },
+  { name: "gen art", link: "/genart" },
 ];
 
 export function PortfolioNav() {

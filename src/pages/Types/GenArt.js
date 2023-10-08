@@ -1,25 +1,23 @@
 import styles from "./GenArt.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import PageAnimator from "../../components/PageAnimator";
 
 const slides = [
   { name: "", imagelink: "./gen_art/let_it_flow.png" },
-  { name: "", imagelink: "./gen_art/art_everGreen_1.png" },
-  { name: "", imagelink: "./gen_art/art_everGreen_2.png" },
-  { name: "", imagelink: "./gen_art/art_everGreen_3.png" },
-  { name: "", imagelink: "./gen_art/art_everGreen_4.png" },
-  { name: "", imagelink: "./gen_art/art_everGreen_5.png" },
-  { name: "", imagelink: "./gen_art/art_everGreen_6.png" },
+  { name: "", imagelink: "./gen_art/art_everGreen_1.jpeg" },
+  { name: "", imagelink: "./gen_art/art_everGreen_2.jpeg" },
+  { name: "", imagelink: "./gen_art/art_everGreen_3.jpeg" },
+  { name: "", imagelink: "./gen_art/art_everGreen_4.jpeg" },
+  { name: "", imagelink: "./gen_art/art_everGreen_5.jpeg" },
+  { name: "", imagelink: "./gen_art/art_everGreen_6.jpeg" },
   { name: "", imagelink: "./gen_art/art_FF_lightning.png" },
-  { name: "", imagelink: "./gen_art/art_fourier_1.png" },
-  { name: "", imagelink: "./gen_art/art_fourier_2.png" },
+  { name: "", imagelink: "./gen_art/art_fourier_1.jpeg" },
+  { name: "", imagelink: "./gen_art/art_fourier_2.jpeg" },
   { name: "", imagelink: "./gen_art/art_fractal_trees_3.jpg" },
-  { name: "", imagelink: "./gen_art/art_fractal_trees_4.png" },
-  { name: "", imagelink: "./gen_art/art_fractal_trees_5.png" },
-  { name: "", imagelink: "./gen_art/art_fractal_trees_pink.png" },
+  { name: "", imagelink: "./gen_art/art_fractal_trees_4.jpeg" },
+  { name: "", imagelink: "./gen_art/art_fractal_trees_5.jpeg" },
+  { name: "", imagelink: "./gen_art/art_fractal_trees_pink.jpeg" },
   { name: "", imagelink: "./gen_art/art_fractal_trees.png" },
-  { name: "", imagelink: "./gen_art/art_spiral.png" },
   { name: "", imagelink: "./gen_art/flow_field_3.13.2021.10.49.27.png" },
   { name: "", imagelink: "./gen_art/flow_field_3.13.2021.23.46.59.png" },
 ];
@@ -42,17 +40,29 @@ const GenArt = ({ onClose }) => {
         <div className={styles.closeButton} onClick={onClose}>
           <Link to={"/portfolio"}>
             <svg width="100%" height="100%" viewBox="0 0 100 100">
-              <path d="M0,0 L100,100 z" stroke="white" strokeWidth={10} />
-              <path d="M100,0 L0,100 z" stroke="white" strokeWidth={10} />
+              <g className={styles.svgControl}>
+                <path d="M0,0 L100,100 z" stroke="white" strokeWidth={20} />
+                <path d="M100,0 L0,100 z" stroke="white" strokeWidth={20} />
+              </g>
             </svg>
           </Link>
         </div>
 
-        <div className={styles.control} onClick={prev}>
-          &lt;
+        <div
+          className={`${styles.control} ${index <= 0 ? styles.inactive : ""}`}
+          onClick={prev}
+        >
+          <svg width="100%" height="100%" viewBox="0 0 100 100">
+            <g>
+              <path
+                className={styles.svgControl}
+                d="M100,0 L0,50 L100,100"
+                stroke="white"
+                strokeWidth={10}
+              />
+            </g>
+          </svg>
         </div>
-
-        {/* <img className={styles.img} src={slides[index].imagelink} /> */}
         <div
           style={{
             width: "100%",
@@ -64,8 +74,22 @@ const GenArt = ({ onClose }) => {
           }}
         />
 
-        <div className={styles.control} onClick={next}>
-          &gt;
+        <div
+          className={`${styles.control} ${
+            index >= totalSlides - 1 ? styles.inactive : ""
+          }`}
+          onClick={next}
+        >
+          <svg width="100%" height="100%" viewBox="0 0 100 100">
+            <g>
+              <path
+                className={styles.svgControl}
+                d="M0,0 L100,50 L0,100"
+                stroke="white"
+                strokeWidth={10}
+              />
+            </g>
+          </svg>
         </div>
       </div>
     </>

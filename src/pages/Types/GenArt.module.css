@@ -47,6 +47,18 @@
   font-size: 4rem;
 }
 
+.svgControl {
+  stroke-width: 10;
+  stroke: white;
+  transition-property: all;
+  transition-duration: 333ms;
+}
+
+.svgControl:hover {
+  stroke-width: 30;
+  stroke: white;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -54,4 +66,16 @@
   to {
     opacity: 1;
   }
+}
+
+.active {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 333ms;
+}
+
+.inactive {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 333ms;
 }

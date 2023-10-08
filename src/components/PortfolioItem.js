@@ -7,8 +7,13 @@ export function PortfolioItem({ title, description, tech, links }) {
       <div className={styles.holder}>
         <div className={styles.title}>{title}</div>
         <div className={styles.description}>{description}</div>
-        <div className={styles.tech}>{tech}</div>
+        <div className={styles.tech}>
+          tech:
+          <span />
+          {tech}
+        </div>
         <div className={styles.linkHolder}>
+          links:
           {links &&
             links.map(({ name, link }) => {
               return (

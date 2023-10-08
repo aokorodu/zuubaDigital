@@ -11,5 +11,7 @@ body {
   margin: 0;
   padding: 0;
   /* background: linear-gradient(180deg, #61e3fb, white); */
-  background-image: radial-gradient(ellipse at center, #ffeedf 0, #61e3fb 100%);
+  background-image: radial-gradient(ellipse at top, #aef2ff 0, #06b4d3 60%);
+  background-repeat: no-repeat;
+  background-color: #06b4d3;
 }

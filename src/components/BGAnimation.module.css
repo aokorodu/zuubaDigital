@@ -8,4 +8,7 @@
   -moz-user-select: none;
   pointer-events: none;
   z-index: -100;
+  background-image: radial-gradient(ellipse at top, #aef2ff 0, #06b4d3 60%);
+  background-repeat: no-repeat;
+  background-color: #06b4d3;
 }

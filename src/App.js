@@ -41,6 +41,7 @@ function App() {
     { imagelink: "./gen_art/art_fractal_trees_5.jpeg" },
     { imagelink: "./gen_art/art_fractal_trees_pink.jpeg" },
     { imagelink: "./gen_art/art_fractal_trees.png" },
+    { imagelink: "./other/portfolio_portrait.png" },
   ];
   const location = useLocation();
   const anim = useRef(null);

@@ -1,5 +1,4 @@
 import styles from "./About.module.css";
-import im from "../assets/portfolio_portrait.png";
 import PageAnimator from "../components/PageAnimator";
 import { useState } from "react";
 import Spinner from "../components/Spinner";
@@ -12,7 +11,7 @@ export function About() {
         <div className={styles.content}>
           <div className={styles.img}>
             <img
-              src={im}
+              src={"./other/portfolio_portrait.png"}
               onLoad={() => {
                 setLoaded(true);
               }}

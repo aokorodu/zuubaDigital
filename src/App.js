@@ -18,6 +18,30 @@ import { useEffect, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 
 function App() {
+  const imagesToCache = [
+    { imagelink: "./vids/experiment_still.png" },
+    { imagelink: "./vids/interactive_still.png" },
+    { imagelink: "./vids/prototype_still.png" },
+    { imagelink: "./vids/application_still.png" },
+    { imagelink: "./vids/games_still.png" },
+    { imagelink: "./gen_art/flow_field.png" },
+    { imagelink: "./gen_art/let_it_flow.png" },
+    { imagelink: "./gen_art/flow_field_3.13.2021.10.49.27.png" },
+    { imagelink: "./gen_art/art_FF_lightning.png" },
+    { imagelink: "./gen_art/art_everGreen_1.jpeg" },
+    { imagelink: "./gen_art/art_everGreen_2.jpeg" },
+    { imagelink: "./gen_art/art_everGreen_3.jpeg" },
+    { imagelink: "./gen_art/art_everGreen_4.jpeg" },
+    { imagelink: "./gen_art/art_everGreen_5.jpeg" },
+    { imagelink: "./gen_art/art_everGreen_6.jpeg" },
+    { imagelink: "./gen_art/art_fourier_1.jpeg" },
+    { imagelink: "./gen_art/art_fourier_2.jpeg" },
+    { imagelink: "./gen_art/art_fractal_trees_3.jpg" },
+    { imagelink: "./gen_art/art_fractal_trees_4.jpeg" },
+    { imagelink: "./gen_art/art_fractal_trees_5.jpeg" },
+    { imagelink: "./gen_art/art_fractal_trees_pink.jpeg" },
+    { imagelink: "./gen_art/art_fractal_trees.png" },
+  ];
   const location = useLocation();
   const anim = useRef(null);
   useEffect(() => {
@@ -56,6 +80,9 @@ function App() {
         </Routes>
       </AnimatePresence>
       <MainNav callback={navCallback} />
+      {imagesToCache.map(({ imagelink }) => (
+        <img src={imagelink} style={{ display: "none" }} />
+      ))}
     </>
   );
 }

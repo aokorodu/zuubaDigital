@@ -45,7 +45,7 @@ export function Experiment() {
         "Proof of concept using ThreeJS. Allows you to select the desired roll amount (the sum of the dice) when one or two dice are thrown. ",
       tech: "React, ThreeJS",
       links: [
-        { name: "link", link: "https://aokorodu.github.io/motion_generator/" },
+        { name: "link", link: "https://aokorodu.github.io/3D_Dice/build/" },
       ],
     },
     {
@@ -53,7 +53,7 @@ export function Experiment() {
       description: "Fractal animation.",
       tech: "Canvas, Processing, JavaScript",
       links: [
-        { name: "link", link: "https://aokorodu.github.io/motion_generator/" },
+        { name: "link", link: "https://aokorodu.github.io/fractalTree/" },
       ],
     },
     {
@@ -61,9 +61,7 @@ export function Experiment() {
       description:
         "vanilla javascript particle animation using the canvas element",
       tech: "Canvas, JavaScript",
-      links: [
-        { name: "link", link: "https://aokorodu.github.io/motion_generator/" },
-      ],
+      links: [{ name: "link", link: "https://aokorodu.github.io/fireworks/" }],
     },
   ];
   return (

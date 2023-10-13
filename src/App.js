@@ -16,6 +16,15 @@ import { PageLayout } from "./pages/PageLayout";
 import GenArt from "./pages/Types/GenArt";
 import { useEffect, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
+import React from "react";
+
+const navigation = [
+  { name: "home", link: "/" },
+  { name: "portfolio", link: "/portfolio" },
+  { name: "about", link: "/about" },
+  { name: "contact", link: "/contact" },
+];
+export const AppContext = React.createContext();
 
 function App() {
   const imagesToCache = [
@@ -60,30 +69,32 @@ function App() {
 
   return (
     <>
-      <BGAnimation ref={anim} />
-      <AnimatePresence mode={"wait"}>
-        <Routes key={location.pathname} location={location}>
-          <Route path="/" element={<PageLayout />}>
-            <Route index element={<Home />} />
-            <Route path="/portfoliolayout" element={<PortfolioLayout />}>
-              <Route index element={<Experiment />} />
-              <Route path="games" element={<Game />} />
-              <Route path="experiments" element={<Experiment />} />
-              <Route path="applications" element={<Applications />} />
-              <Route path="intSVGs" element={<IntSVGs />} />
-              <Route path="prototypes" element={<Prototypes />} />
+      <AppContext.Provider value={navigation}>
+        <BGAnimation ref={anim} />
+        <AnimatePresence mode={"wait"}>
+          <Routes key={location.pathname} location={location}>
+            <Route path="/" element={<PageLayout />}>
+              <Route index element={<Home />} />
+              <Route path="/portfoliolayout" element={<PortfolioLayout />}>
+                <Route index element={<Experiment />} />
+                <Route path="games" element={<Game />} />
+                <Route path="experiments" element={<Experiment />} />
+                <Route path="applications" element={<Applications />} />
+                <Route path="intSVGs" element={<IntSVGs />} />
+                <Route path="prototypes" element={<Prototypes />} />
+              </Route>
+              <Route path="/genart" element={<GenArt />} />
+              <Route path="/portfolio" element={<Portfolio />}></Route>
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
             </Route>
-            <Route path="/genart" element={<GenArt />} />
-            <Route path="/portfolio" element={<Portfolio />}></Route>
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Route>
-        </Routes>
-      </AnimatePresence>
-      <MainNav callback={navCallback} />
-      {imagesToCache.map(({ imagelink }) => (
-        <img src={imagelink} style={{ display: "none" }} />
-      ))}
+          </Routes>
+        </AnimatePresence>
+        <MainNav callback={navCallback} />
+        {imagesToCache.map(({ imagelink }) => (
+          <img src={imagelink} style={{ display: "none" }} />
+        ))}
+      </AppContext.Provider>
     </>
   );
 }

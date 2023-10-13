@@ -1,19 +1,14 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import { AppContext } from "../App";
 import styles from "./MainNav.module.css";
 import { NavLink } from "react-router-dom";
-import { FaBars } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 
 import Hamburger from "./Hamburger";
 
-const navigation = [
-  { name: "home", link: "/" },
-  { name: "portfolio", link: "/portfolio" },
-  { name: "about", link: "/about" },
-  { name: "contact", link: "/contact" },
-];
-
 export function MainNav({ callback }) {
+  const navigation = useContext(AppContext);
+  console.log("navigation: ", navigation);
   const mobileLinkHolder = useRef(null);
   const [open, setOpen] = useState(false);
   const toggleOpen = () => {

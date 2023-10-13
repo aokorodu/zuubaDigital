@@ -7,22 +7,13 @@ import { MdClose } from "react-icons/md";
 import Hamburger from "./Hamburger";
 
 export function MainNav({ callback }) {
-  const navigation = useContext(AppContext);
-  console.log("navigation: ", navigation);
+  const navigation = useContext(AppContext).main;
   const mobileLinkHolder = useRef(null);
   const [open, setOpen] = useState(false);
   const toggleOpen = () => {
     console.log("open?", open);
     mobileLinkHolder.current.classList.toggle(styles.open);
     setOpen(!open);
-  };
-
-  const getClass = () => {
-    const str = open
-      ? `${styles.nav} ${styles.open}`
-      : `${styles.nav} ${styles.closed}`;
-
-    return str;
   };
 
   return (

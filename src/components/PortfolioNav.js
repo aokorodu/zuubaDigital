@@ -1,20 +1,14 @@
 import styles from "./PortfolioNav.module.css";
 import { NavLink } from "react-router-dom";
-
-const pLinks = [
-  { name: "experiments", link: "/portfoliolayout/experiments" },
-  { name: "interactive SVGs", link: "/portfoliolayout/intSVGs" },
-  { name: "prototypes", link: "/portfoliolayout/prototypes" },
-  { name: "applications", link: "/portfoliolayout/applications" },
-  { name: "games", link: "/portfoliolayout/games" },
-  { name: "gen art", link: "/genart" },
-];
+import { useContext } from "react";
+import { AppContext } from "../App";
 
 export function PortfolioNav() {
+  const navigation = useContext(AppContext).portfolio;
   return (
     <>
       <div className={styles.subnavHolder}>
-        {pLinks.map(({ name, link }) => {
+        {navigation.map(({ name, link }) => {
           return (
             <NavLink
               key={`mobile_${name}`}

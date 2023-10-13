@@ -18,12 +18,27 @@ import { useEffect, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import React from "react";
 
-const navigation = [
+const mainNavigation = [
   { name: "home", link: "/" },
   { name: "portfolio", link: "/portfolio" },
   { name: "about", link: "/about" },
   { name: "contact", link: "/contact" },
 ];
+
+const portfolioNav = [
+  { name: "experiments", link: "/portfoliolayout/experiments" },
+  { name: "interactive SVGs", link: "/portfoliolayout/intSVGs" },
+  { name: "prototypes", link: "/portfoliolayout/prototypes" },
+  { name: "applications", link: "/portfoliolayout/applications" },
+  { name: "games", link: "/portfoliolayout/games" },
+  { name: "gen art", link: "/genart" },
+];
+
+const nav = {
+  main: mainNavigation,
+  portfolio: portfolioNav,
+};
+
 export const AppContext = React.createContext();
 
 function App() {
@@ -69,7 +84,7 @@ function App() {
 
   return (
     <>
-      <AppContext.Provider value={navigation}>
+      <AppContext.Provider value={nav}>
         <BGAnimation ref={anim} />
         <AnimatePresence mode={"wait"}>
           <Routes key={location.pathname} location={location}>

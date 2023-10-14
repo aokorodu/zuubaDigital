@@ -1,29 +1,13 @@
 import styles from "./GenArt.module.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Paginator from "../../components/paginator/";
+import { AppContext } from "../../App";
 
-const slides = [
-  { name: "", imagelink: "./gen_art/let_it_flow.png" },
-  { name: "", imagelink: "./gen_art/flow_field_3.13.2021.10.49.27.png" },
-  { name: "", imagelink: "./gen_art/art_FF_lightning.png" },
-  { name: "", imagelink: "./gen_art/art_everGreen_1.jpeg" },
-  { name: "", imagelink: "./gen_art/art_everGreen_2.jpeg" },
-  { name: "", imagelink: "./gen_art/art_everGreen_3.jpeg" },
-  { name: "", imagelink: "./gen_art/art_everGreen_4.jpeg" },
-  { name: "", imagelink: "./gen_art/art_everGreen_5.jpeg" },
-  { name: "", imagelink: "./gen_art/art_everGreen_6.jpeg" },
-  { name: "", imagelink: "./gen_art/art_fourier_1.jpeg" },
-  { name: "", imagelink: "./gen_art/art_fourier_2.jpeg" },
-  { name: "", imagelink: "./gen_art/art_fractal_trees_3.jpg" },
-  { name: "", imagelink: "./gen_art/art_fractal_trees_4.jpeg" },
-  { name: "", imagelink: "./gen_art/art_fractal_trees_5.jpeg" },
-  { name: "", imagelink: "./gen_art/art_fractal_trees_pink.jpeg" },
-  { name: "", imagelink: "./gen_art/art_fractal_trees.png" },
-];
-const totalSlides = slides.length;
 const GenArt = ({ onClose }) => {
   const [index, setIndex] = useState(0);
+  const slides = useContext(AppContext).slides;
+  const totalSlides = slides.length;
   const next = () => {
     if (index + 1 === totalSlides) return;
 

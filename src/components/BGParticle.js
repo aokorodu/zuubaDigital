@@ -201,11 +201,6 @@ class BGParticle extends React.Component {
       "transform",
       `translate(${this.physics.position.x} ${this.physics.position.y})`
     );
-    // let pos = this.physics.position.y > 1000 ? 1000 : this.physics.position.y;
-    // let gap = 1000 - pos;
-    // let op = gap / (20 * this.physics.radius);
-    // if (op > 1) op = 1;
-    // this.holder.setAttribute("opacity", `${op}`);
   }
 
   render() {
@@ -226,8 +221,6 @@ class BGParticle extends React.Component {
             strokeOpacity={0.3}
             strokeWidth={5}
           />
-
-          {/* <circle cx={0} cy={0} r={this.physics.radius / 2} fill={this.color} opacity={0.05} /> */}
         </g>
       </>
     );

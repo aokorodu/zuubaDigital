@@ -8,7 +8,7 @@
   transition-duration: 250ms;
   transition-timing-function: ease-out;
   filter: saturate(0.2);
-  border-radius: 50%;
+  border-radius: 30%;
   overflow: hidden;
   border: 10px solid rgba(255, 255, 255, 0.2);
   box-sizing: border-box;
@@ -33,7 +33,8 @@
 }
 
 .textHolder {
-  width: 100%;
   text-align: center;
   margin: 0.1rem 0.5rem 1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
 }

@@ -10,7 +10,7 @@
 
 .title {
   font-size: 8vw;
-  font-weight: 400;
+  font-weight: 700;
   color: inherit;
   opacity: 0.8;
 }
@@ -19,5 +19,6 @@
   letter-spacing: 0.25vw;
   transform: translateY(-0.1rem);
   font-size: 0.9rem;
+  font-weight: 700;
   color: inherit;
 }

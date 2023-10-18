@@ -35,6 +35,7 @@
 }
 
 .inactive {
+  position: relative;
   color: #001752;
   font-size: 1.5rem;
   transition-property: all;
@@ -44,6 +45,7 @@
   font-weight: 400;
   text-decoration: none;
   text-align: center;
+  width: fit-content;
 }
 
 .mobileNav {

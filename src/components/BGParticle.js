@@ -1,5 +1,6 @@
 import React from "react";
 import PVector from "../utils/PVector";
+import bubble from "../assets/bubble.png";
 
 class BGParticle extends React.Component {
   constructor({ index }) {
@@ -11,8 +12,8 @@ class BGParticle extends React.Component {
 
     // physics vars
     this.physics = {
-      minRadius: 11,
-      radius: 2 + Math.round(Math.random() * 11),
+      minRadius: 12,
+      radius: 2 + Math.round(Math.random() * 12),
       gravity: new PVector(0, 0.4),
       floatVelocity: new PVector(0, -0.1 - Math.random() * 2),
       acceleration: new PVector(0, 0.4),
@@ -211,15 +212,29 @@ class BGParticle extends React.Component {
           id={`circ_${this.index}`}
           transform={`translate(${this.physics.position.x} ${this.physics.position.y})`}
         >
+          {/* <img
+            style={{
+              width: this.physics.radius * 2,
+              height: this.physics.radius * 2,
+            }}
+            src={"./other/portfolio_portrait.png"}
+          /> */}
           <circle
             cx={0}
             cy={0}
             r={this.physics.radius}
-            fill={"white"}
-            fillOpacity={0.2}
+            fill={this.color}
+            fillOpacity={0.3}
             stroke={"white"}
-            strokeOpacity={0.3}
-            strokeWidth={5}
+            strokeOpacity={0.1}
+            strokeWidth={1}
+          />
+          <image
+            href={bubble}
+            x={-this.physics.radius}
+            y={-this.physics.radius}
+            height={this.physics.radius * 2}
+            width={this.physics.radius * 2}
           />
         </g>
       </>

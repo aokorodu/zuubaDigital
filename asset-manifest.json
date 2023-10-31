@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/zuubaDigital/static/css/main.50d63f53.css",
+    "main.css": "/zuubaDigital/static/css/main.4d49c97f.css",
     "main.js": "/zuubaDigital/static/js/main.8b2e2e5e.js",
     "index.html": "/zuubaDigital/index.html",
-    "main.50d63f53.css.map": "/zuubaDigital/static/css/main.50d63f53.css.map",
+    "main.4d49c97f.css.map": "/zuubaDigital/static/css/main.4d49c97f.css.map",
     "main.8b2e2e5e.js.map": "/zuubaDigital/static/js/main.8b2e2e5e.js.map"
   },
   "entrypoints": [
-    "static/css/main.50d63f53.css",
+    "static/css/main.4d49c97f.css",
     "static/js/main.8b2e2e5e.js"
   ]
 }

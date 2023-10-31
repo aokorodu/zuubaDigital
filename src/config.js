@@ -69,19 +69,19 @@ export const navConfig = {
       ],
     },
     {
-      title: "zuubaDigital portfolio",
-      description:
-        "My online portfolio, built with React. You're looking at it",
-      tech: "React, React Router, React Context, Framer Motion for page transitions, JavaScript/CSS for particle animations.",
-    },
-    {
       title: "EV Charging Analyzer",
       description:
-        "Simple analysis an comparison of charging level strategy (80% vs 100%) for E-GMP electric vehicles. (Hyundai Ioniq 5 & 6, Kia EV6, Genesis GV60). Uses vehicle range, average drive time to DC charger, and average wait time to construct a simple graph comparing time spent charging to 80% vs 100%",
+        "Simple analysis and comparison of charging level strategy (80% vs 100%) for E-GMP electric vehicles. (Hyundai Ioniq 5 & 6, Kia EV6, Genesis GV60). Uses vehicle range, average drive time to DC charger, and average wait time to construct a simple graph comparing time spent charging to 80% vs 100%",
       tech: "React, Framer Motion, Material UI, SVG, vanilla JavaScript to create chart.",
       links: [
         { name: "link", link: "https://aokorodu.github.io/EVChargeTime/" },
       ],
+    },
+    {
+      title: "zuubaDigital portfolio",
+      description:
+        "My online portfolio, built with React. You're looking at it",
+      tech: "React, React Router, React Context, Framer Motion for page transitions, JavaScript/CSS for particle animations.",
     },
   ],
   experiments: [
